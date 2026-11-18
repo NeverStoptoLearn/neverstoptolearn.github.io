@@ -1,4 +1,4 @@
-import type { EducationEntry, Localized, ResearchArea } from './types';
+import type { EducationEntry, Localized } from './types';
 
 const institution = {
   en: 'School of Computer Science, China University of Geosciences (Wuhan)',
@@ -16,19 +16,14 @@ export const profile = {
   role: { en: 'Ph.D. Student in Geoscience Information Engineering', zh: '地学信息工程博士在读' },
   affiliation: institution,
   biography: {
-    en: 'I am pursuing a Ph.D. in Geoscience Information Engineering at China University of Geosciences (Wuhan) under the supervision of Prof. Xuesong Yan. I previously completed my undergraduate and master’s studies in Computer Science and Technology at the same university.',
-    zh: '我目前在中国地质大学（武汉）计算机学院攻读地学信息工程博士学位，师从颜雪松教授。本科和硕士阶段均在该校计算机学院学习计算机科学与技术。',
+    en: 'I am currently pursuing a Ph.D. in Geoscience Information Engineering at the School of Computer Science, China University of Geosciences (Wuhan), under the supervision of Prof. Xuesong Yan. I received my bachelor’s degree in 2020 and my master’s degree in 2023, both from the School of Computer Science, China University of Geosciences (Wuhan).',
+    zh: '我目前在中国地质大学（武汉）计算机学院攻读地学信息工程博士学位，师从颜雪松教授。2020年于中国地质大学（武汉）计算机学院获得学士学位，2023年于中国地质大学（武汉）计算机学院获得硕士学位。',
   },
   researchSummary: {
-    en: 'My research focuses on applying deep learning and intelligent optimization algorithms to complex physical systems, with applications in groundwater contamination detection, source identification, and emergency response scheduling.',
-    zh: '我的研究聚焦于深度学习和智能优化算法在复杂物理场景下的应用，具体包括地下水污染检测、污染源溯源和应急调度。',
+    en: 'My research focuses on the application of deep learning and intelligent optimization algorithms in complex physical settings, specifically groundwater contamination detection, source identification, and emergency response scheduling. By integrating observational data with physical principles, I explore methods for contamination assessment, source inversion, and multi-objective scheduling optimization.',
+    zh: '我的研究方向是深度学习和智能优化算法在复杂物理场景下的应用，具体包括地下水污染检测、溯源与应急调度。研究中注重融合观测数据与物理规律，探索污染状态识别、污染源反演和多目标调度优化方法。',
   },
   cvUrl: '', // Set to /files/zhouchen-cv.pdf after adding the real PDF to public/files.
-  researchAreas: [
-    { title: { en: 'Deep Learning and Intelligent Optimization for Complex Physical Systems', zh: '复杂物理场景下的深度学习与智能优化算法' } },
-    { title: { en: 'Groundwater Contamination Detection and Source Identification', zh: '地下水污染检测与溯源' } },
-    { title: { en: 'Groundwater Contamination Emergency Response Scheduling', zh: '地下水污染应急调度' } },
-  ] as ResearchArea[],
   // Publisher JIFs checked on 2026-11-18; use the two-year JIF, not CiteScore or five-year JIF.
   // Elsevier: https://shop.elsevier.com/journals/{journal-slug}/{issn}
   // Springer: https://link.springer.com/journal/13201

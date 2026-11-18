@@ -15,13 +15,13 @@ const en = locale === 'en';
     {profile.affiliation[locale] && <p>{profile.affiliation[locale]}</p>}
     <section class="home-section" id="research">
       <h2>{labels[locale].research}</h2>
-      <ul>{profile.researchAreas.map(area => <li>{area.title[locale]}</li>)}</ul>
+      <p>{profile.researchSummary[locale]}</p>
     </section>
     <a href={href(locale, 'cv')}>{en ? 'Curriculum vitae' : '查看学术简历'}</a>
   </div>}
   {page === 'research' && <>
     <h2>{en ? 'Research interests' : '研究兴趣'}</h2>
-    {profile.researchAreas.length ? <ul>{profile.researchAreas.map(area => <li>{area.title[locale]}</li>)}</ul> : <p class="muted">{en ? 'Research interests will be added here.' : '研究方向待补充。'}</p>}
+    <p>{profile.researchSummary[locale]}</p>
     <section class="home-section">
       <div class="section-heading"><h2>{en ? 'Related projects' : '相关项目'}</h2><a href={href(locale, 'projects')}>{en ? 'All projects' : '全部项目'}</a></div>
       <Records locale={locale} kind="projects" selected />
