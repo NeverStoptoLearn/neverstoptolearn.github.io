@@ -51,13 +51,15 @@ const PaperTitle = headingLevel === 3 ? 'h3' : 'h2';
 ) : (
   <div class="record-list">
     {work.map(project => (
-      <article class="record">
-        <span class="record-meta">{en ? project.status : project.status === 'ongoing' ? '进行中' : '已完成'}</span>
+      <article class="record" id={project.id}>
+        {project.period && <p class="record-meta">{project.period}</p>}
+        {project.status && <span class="record-meta">{en ? project.status : project.status === 'ongoing' ? '进行中' : '已完成'}</span>}
         <h3>{project.title[locale]}</h3>
+        {project.funding && <p>{project.funding[locale]}</p>}
         <p>{project.summary[locale]}</p>
-        <div class="tags">{project.topics.map(topic => <span>{topic}</span>)}</div>
+        {project.topics.length > 0 && <div class="tags">{project.topics.map(topic => <span>{topic}</span>)}</div>}
         <div class="record-links">
-          {project.url && <a href={project.url}>{en ? 'Project' : '项目'}</a>}
+          {project.url && <a href={project.url}>{en ? 'Project announcement' : '项目介绍'}</a>}
           {project.codeUrl && <a href={project.codeUrl}>{en ? 'Code' : '代码'}</a>}
         </div>
       </article>

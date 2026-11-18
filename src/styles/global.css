@@ -6,6 +6,7 @@
   line-height: 1.65;
   font-synthesis: none;
   color-scheme: light;
+  scroll-padding-top: 100px;
 }
 
 * { box-sizing: border-box; }
@@ -28,7 +29,7 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .85rem; }
   width: min(840px, calc(100% - 48px));
   margin-inline: auto;
 }
-.site-header { padding-top: 28px; }
+.site-header { position: sticky; top: 0; z-index: 20; padding-top: 28px; background: #fff; }
 .header-inner { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; padding-bottom: 18px; border-bottom: 1px solid #e5e5e5; }
 .brand { color: #222; font-size: 1rem; font-weight: 600; }
 .desktop-nav { display: flex; flex-wrap: wrap; gap: 18px; margin-left: auto; font-size: .875rem; }
@@ -78,11 +79,12 @@ nav a[aria-current='page'] { color: #222; text-decoration: underline; text-under
 .education-list p { margin-bottom: 0; }
 .education-period { color: #555; font-variant-numeric: tabular-nums; }
 .education-period small { display: block; font-size: .75rem; }
-.skip-link { position: absolute; top: -100px; left: 16px; background: #fff; padding: 8px; z-index: 10; }
+.skip-link { position: absolute; top: -100px; left: 16px; background: #fff; padding: 8px; z-index: 30; }
 .skip-link:focus { top: 8px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 20px; }
 
 @media (max-width: 700px) {
+  :root { scroll-padding-top: 140px; }
   .desktop-nav { display: none; }
   .header-inner { justify-content: space-between; }
   .mobile-menu { display: block; padding-top: 12px; font-size: .875rem; }

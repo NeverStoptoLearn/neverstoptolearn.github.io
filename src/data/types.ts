@@ -27,7 +27,9 @@ export interface ResearchProject {
   id: string;
   title: Localized;
   summary: Localized;
-  status: 'ongoing' | 'completed';
+  period?: string;
+  funding?: Localized;
+  status?: 'ongoing' | 'completed';
   topics: string[];
   selected: boolean;
   url?: string;

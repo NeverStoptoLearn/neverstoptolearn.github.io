@@ -41,6 +41,12 @@ test('Navigation reaches each section', async ({ page }, info) => {
       await link.click();
       await expect(page).toHaveURL(`${home}#${section}`);
       await expect(page.locator(`#${section}`)).toBeInViewport();
+      const header = page.locator('.site-header');
+      await expect(header).toBeInViewport();
+      const headerBounds = await header.boundingBox();
+      const sectionBounds = await page.locator(`#${section}`).boundingBox();
+      expect(headerBounds?.y).toBe(0);
+      expect(sectionBounds!.y).toBeGreaterThanOrEqual(headerBounds!.height);
     }
   }
 });

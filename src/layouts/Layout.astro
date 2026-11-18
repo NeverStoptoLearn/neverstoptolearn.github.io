@@ -54,5 +54,13 @@ const canonical = new URL(href(locale, page), Astro.site);
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer"><span>© {new Date().getFullYear()} {profile.name}</span><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a></footer>
+    <script>
+      const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+      menu?.addEventListener('click', event => {
+        if (event.target instanceof HTMLAnchorElement && event.target.hash) {
+          menu.open = false;
+        }
+      });
+    </script>
   </body>
 </html>
