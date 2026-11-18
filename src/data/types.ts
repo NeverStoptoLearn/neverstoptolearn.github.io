@@ -26,8 +26,8 @@ export interface Publication {
 export interface ResearchProject {
   id: string;
   title: Localized;
-  summary: Localized;
-  period?: string;
+  summary?: Localized;
+  period?: string | Localized;
   funding?: Localized;
   status?: 'ongoing' | 'completed';
   topics: string[];

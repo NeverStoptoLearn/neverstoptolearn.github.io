@@ -20,4 +20,93 @@ export const projects: ResearchProject[] = [
     topics: [],
     selected: true,
   },
+  {
+    id: 'moe-student-affairs-information-system',
+    title: {
+      en: 'Ministry of Education Student Affairs Department Commissioned Project — Student Affairs Electronic Information Management System',
+      zh: '教育部高校学生司委托课题—学生司电子信息管理系统',
+    },
+    period: '2019.08–2020.03',
+    topics: [],
+    selected: true,
+  },
+  {
+    id: 'advanced-intelligent-optimization-platform',
+    title: {
+      en: 'Advanced Intelligent Optimization Software Platform',
+      zh: '先进智能优化技术软件平台项目',
+    },
+    period: '2021.02–2021.12',
+    topics: [],
+    selected: true,
+  },
+  {
+    id: 'csic-709-task-planning-software',
+    title: {
+      en: 'Task Planning Software Design for CSIC No. 709 Research Institute',
+      zh: '中船重工709研究所任务规划软件设计',
+    },
+    period: '2023.05–2024.06',
+    topics: [],
+    selected: true,
+  },
+  {
+    id: 'western-organization-system-development',
+    title: {
+      en: 'System Development for an Organization in Western China',
+      zh: '西部某单位系统研发',
+    },
+    period: { en: '2024.12–Present', zh: '2024.12–至今' },
+    topics: [],
+    selected: true,
+  },
+  {
+    id: 'energy-china-data-governance',
+    title: {
+      en: 'Research on Data Governance and Value Creation Frameworks for Energy China',
+      zh: '中国能建数据治理与价值化体系研究',
+    },
+    period: '2026.06–2026.10',
+    topics: [],
+    selected: true,
+  },
+  {
+    id: 'explorer-mineral-evaluation-system',
+    title: {
+      en: 'Explorer Mineral Exploration and Development Evaluation Software System',
+      zh: '勘探者矿产勘查与开发评价软件系统',
+    },
+    period: '2022.11–2025.01',
+    topics: [],
+    selected: true,
+  },
+  {
+    id: 'pincheng-weichuang-apparel-system',
+    title: {
+      en: 'Pincheng Weichuang Apparel Management System',
+      zh: '品诚唯创服装管理系统',
+    },
+    period: '2021.03–2022.01',
+    topics: [],
+    selected: true,
+  },
+  {
+    id: 'huangbai-river-reservoir-operation',
+    title: {
+      en: 'Integrated Reservoir Operation System for the Huangbai River Basin',
+      zh: '黄柏河流域水库综合调度系统',
+    },
+    topics: [],
+    selected: true,
+  },
+  {
+    id: 'yuanan-integrated-water-supply',
+    title: {
+      en: 'Planning and Design of an Integrated Urban–Rural Safe Drinking Water Management System in Yuan’an County',
+      zh: '远安县城乡供水一体化安全饮水管理系统规划设计',
+    },
+    period: '2023.04–2023.09',
+    topics: [],
+    selected: true,
+  },
 ];
