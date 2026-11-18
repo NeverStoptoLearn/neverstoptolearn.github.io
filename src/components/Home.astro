@@ -14,9 +14,11 @@ const en = locale === 'en';
     <p class="profile-role">{profile.role[locale]}</p>
     <p class="profile-affiliation">{profile.affiliation[locale]}</p>
     <div class="profile-links">
+      <a href={`mailto:${profile.email}`}>{en ? 'Email' : '邮箱'}</a>
+      <a href={`https://orcid.org/${profile.orcid}`} rel="me noopener noreferrer" target="_blank">ORCID</a>
+      <a href={`${profile.googleScholar}&hl=${en ? 'en' : 'zh-CN'}`} rel="noopener noreferrer" target="_blank">Google Scholar</a>
       <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href={href(locale, 'cv')}>{labels[locale].cv}</a>
-      <a href={href(locale, 'contact')}>{labels[locale].contact}</a>
     </div>
   </header>
   <p class="profile-biography">{profile.biography[locale]}</p>

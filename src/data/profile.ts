@@ -9,7 +9,9 @@ const advisor = { en: 'Prof. Xuesong Yan', zh: '颜雪松教授' };
 export const profile = {
   name: 'Zhouchen',
   github: 'https://github.com/NeverStoptoLearn',
-  email: '',
+  email: 'chenzz_14@outlook.com',
+  orcid: '0009-0005-0160-1988',
+  googleScholar: 'https://scholar.google.com/citations?user=OSbLeCEAAAAJ',
   role: { en: 'Ph.D. Student in Geoscience Information Engineering', zh: '地学信息工程博士在读' },
   affiliation: institution,
   biography: {

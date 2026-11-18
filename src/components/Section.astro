@@ -34,7 +34,9 @@ const en = locale === 'en';
     </section>}
   </>}
   {page === 'contact' && <div class="prose">
-    {profile.email && <p>Email: <a href={`mailto:${profile.email}`}>{profile.email}</a></p>}
+    <p>{en ? 'Email: ' : '邮箱：'}<a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+    <p>ORCID: <a href={`https://orcid.org/${profile.orcid}`} target="_blank" rel="me noopener noreferrer">{profile.orcid}</a></p>
+    <p><a href={`${profile.googleScholar}&hl=${en ? 'en' : 'zh-CN'}`} target="_blank" rel="noopener noreferrer">Google Scholar</a></p>
     <p>GitHub: <a href={profile.github} target="_blank" rel="noopener noreferrer">NeverStoptoLearn</a></p>
   </div>}
 </div>
