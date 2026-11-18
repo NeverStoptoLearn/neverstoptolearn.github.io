@@ -29,18 +29,24 @@ export const profile = {
     { title: { en: 'Groundwater Contamination Detection and Source Identification', zh: '地下水污染检测与溯源' } },
     { title: { en: 'Groundwater Contamination Emergency Response Scheduling', zh: '地下水污染应急调度' } },
   ] as ResearchArea[],
+  // Publisher JIFs checked on 2026-11-18; use the two-year JIF, not CiteScore or five-year JIF.
+  // Elsevier: https://shop.elsevier.com/journals/{journal-slug}/{issn}
+  // Springer: https://link.springer.com/journal/13201
+  // IEEE: https://ieeeaccess.ieee.org/about/bibliometrics/
+  // Water: https://www.mdpi.com/journal/water
+  // NCA has no current JIF on its publisher page; retain its historical 2023 JIF (4.5).
   reviewingJournals: [
-    { name: 'Neural Computing and Applications', abbreviation: 'Neural Comput. Appl.' },
-    { name: 'Water', abbreviation: 'Water' },
-    { name: 'IEEE Access', abbreviation: 'IEEE Access' },
-    { name: 'Information Sciences', abbreviation: 'Inf. Sci.' },
-    { name: 'Journal of Cleaner Production', abbreviation: 'J. Clean. Prod.' },
-    { name: 'Journal of Hazardous Materials', abbreviation: 'J. Hazard. Mater.' },
-    { name: 'Applied Water Science', abbreviation: 'Appl. Water Sci.' },
-    { name: 'Journal of Hydrology', abbreviation: 'J. Hydrol.' },
-    { name: 'Applied Soft Computing', abbreviation: 'Appl. Soft Comput.' },
-    { name: 'Expert Systems with Applications', abbreviation: 'Expert Syst. Appl.' },
-  ],
+    { name: 'Journal of Cleaner Production', abbreviation: 'J. Clean. Prod.', impactFactor: 10.7, impactFactorYear: 2025 },
+    { name: 'Journal of Hazardous Materials', abbreviation: 'J. Hazard. Mater.', impactFactor: 10.6, impactFactorYear: 2025 },
+    { name: 'Expert Systems with Applications', abbreviation: 'Expert Syst. Appl.', impactFactor: 9.4, impactFactorYear: 2025 },
+    { name: 'Applied Soft Computing', abbreviation: 'Appl. Soft Comput.', impactFactor: 7.8, impactFactorYear: 2025 },
+    { name: 'Journal of Hydrology', abbreviation: 'J. Hydrol.', impactFactor: 7.3, impactFactorYear: 2025 },
+    { name: 'Information Sciences', abbreviation: 'Inf. Sci.', impactFactor: 6.0, impactFactorYear: 2025 },
+    { name: 'Applied Water Science', abbreviation: 'Appl. Water Sci.', impactFactor: 5.7, impactFactorYear: 2025 },
+    { name: 'Neural Computing and Applications', abbreviation: 'Neural Comput. Appl.', impactFactor: 4.5, impactFactorYear: 2023 },
+    { name: 'IEEE Access', abbreviation: 'IEEE Access', impactFactor: 4.2, impactFactorYear: 2025 },
+    { name: 'Water', abbreviation: 'Water', impactFactor: 3.5, impactFactorYear: 2025 },
+  ].sort((a, b) => b.impactFactor - a.impactFactor),
   awards: [
     {
       date: '2026-05',
