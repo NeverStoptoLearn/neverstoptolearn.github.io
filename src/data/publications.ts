@@ -14,6 +14,7 @@ export const publications: Publication[] = [
     citation: '333, 133988',
     kind: 'journal',
     doi: '10.1016/j.eswa.2026.133988',
+    codeUrl: 'https://github.com/NeverStoptoLearn/MITEDA',
   },
   {
     id: 'encoder-decoder-groundwater-tracing',
@@ -40,6 +41,7 @@ export const publications: Publication[] = [
     citation: '152(2), 04025075',
     kind: 'journal',
     doi: '10.1061/JWRMD5.WRENG-7084',
+    codeUrl: 'https://github.com/NeverStoptoLearn/TS-BPINN',
   },
   {
     id: 'cnn-groundwater-source',
@@ -66,6 +68,7 @@ export const publications: Publication[] = [
     citation: '99, 102210',
     kind: 'journal',
     doi: '10.1016/j.swevo.2025.102210',
+    codeUrl: 'https://github.com/NeverStoptoLearn/HydroPhysics-NSGA-II',
   },
   {
     id: 'feasible-non-dominated-optimization',
