@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+import { profile } from '../data/profile';
+import type { Locale } from '../data/types';
+import { href, labels, descriptions, sections, type Page } from '../lib/i18n';
+interface Props { locale: Locale; page: Page; }
+const { locale, page } = Astro.props;
+const other = locale === 'en' ? 'zh' : 'en';
+const title = `${page === 'home' ? (locale === 'en' ? 'Academic Homepage' : '学术主页') : labels[locale][page]} · ${profile.name}`;
+const canonical = new URL(href(locale, page), Astro.site);
+---
+<!doctype html>
+<html lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={descriptions[locale][page]} />
+    <meta name="theme-color" content="#ffffff" />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(href('en', page), Astro.site)} />
+    <link rel="alternate" hreflang="zh-CN" href={new URL(href('zh', page), Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(href('en', page), Astro.site)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={descriptions[locale][page]} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'zh_CN'} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{locale === 'en' ? 'Skip to content' : '跳至正文'}</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href={href(locale)} aria-label={`${profile.name} — ${labels[locale].home}`}>{profile.name}</a>
+        <nav class="desktop-nav" aria-label={locale === 'en' ? 'Main navigation' : '主导航'}>
+          {sections.map(section => <a href={href(locale, section)} aria-current={page === section ? 'page' : undefined}>{labels[locale][section]}</a>)}
+        </nav>
+        <a class="language-switch" data-language-switch href={href(other, page)} lang={other === 'zh' ? 'zh-CN' : 'en'} hreflang={other === 'zh' ? 'zh-CN' : 'en'}>{other === 'zh' ? '简体中文' : 'English'}</a>
+      </div>
+      <details class="mobile-menu">
+        <summary>{locale === 'en' ? 'Menu' : '导航'}</summary>
+        <nav aria-label={locale === 'en' ? 'Mobile navigation' : '移动导航'}>
+          <a href={href(locale)} aria-current={page === 'home' ? 'page' : undefined}>{labels[locale].home}</a>
+          {sections.map(section => <a href={href(locale, section)} aria-current={page === section ? 'page' : undefined}>{labels[locale][section]}</a>)}
+        </nav>
+      </details>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer"><span>© {new Date().getFullYear()} {profile.name}</span><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a></footer>
+  </body>
+</html>

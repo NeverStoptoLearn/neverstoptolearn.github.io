@@ -1,0 +1,66 @@
+---
+import type { Locale } from '../data/types';
+import { publications } from '../data/publications';
+import { projects } from '../data/projects';
+interface Props {
+  locale: Locale;
+  kind: 'publications' | 'projects';
+  selected?: boolean;
+  headingLevel?: 2 | 3;
+}
+const { locale, kind, selected = false, headingLevel = 2 } = Astro.props;
+const en = locale === 'en';
+const papers = [...publications].sort((a, b) => b.year - a.year);
+const work = projects.filter(p => !selected || p.selected);
+const empty = kind === 'publications' ? papers.length === 0 : work.length === 0;
+const paperKinds = en
+  ? { journal: 'Journal article', conference: 'Conference paper', preprint: 'Preprint' }
+  : { journal: '期刊论文', conference: '会议论文', preprint: '预印本' };
+const PaperTitle = headingLevel === 3 ? 'h3' : 'h2';
+---
+{empty ? (
+  <p class="muted">
+    {kind === 'publications'
+      ? (en ? 'Publication list forthcoming.' : '论文列表待补充。')
+      : (en ? 'Project details forthcoming.' : '项目详情待补充。')}
+  </p>
+) : kind === 'publications' ? (
+  <div class="record-list">
+    {papers.map(paper => (
+      <article class="record" id={paper.id}>
+        <span class="record-meta">{paper.yearLabel?.[locale] ?? paper.year} · {paperKinds[paper.kind]}</span>
+        <PaperTitle class="publication-title">{paper.title[locale]}</PaperTitle>
+        <p>{paper.authors.join(en ? ', ' : '、')}</p>
+        <p><cite>{paper.venue}</cite>{paper.citation && `, ${paper.citation}`}</p>
+        {paper.abstract && (
+          <details>
+            <summary>{en ? 'Abstract' : '摘要'}</summary>
+            <p>{paper.abstract[locale]}</p>
+          </details>
+        )}
+        <div class="record-links">
+          {paper.paperUrl && <a href={paper.paperUrl}>{en ? 'Paper' : '论文'}</a>}
+          {paper.codeUrl && <a href={paper.codeUrl}>{en ? 'Code' : '代码'}</a>}
+          {paper.doi && <a href={`https://doi.org/${paper.doi}`}>DOI</a>}
+          {paper.referenceUrl && <a href={paper.referenceUrl}>{en ? 'Citation source' : '书目来源'}</a>}
+        </div>
+        {paper.bibtex && <details><summary>BibTeX</summary><pre>{paper.bibtex}</pre></details>}
+      </article>
+    ))}
+  </div>
+) : (
+  <div class="record-list">
+    {work.map(project => (
+      <article class="record">
+        <span class="record-meta">{en ? project.status : project.status === 'ongoing' ? '进行中' : '已完成'}</span>
+        <h3>{project.title[locale]}</h3>
+        <p>{project.summary[locale]}</p>
+        <div class="tags">{project.topics.map(topic => <span>{topic}</span>)}</div>
+        <div class="record-links">
+          {project.url && <a href={project.url}>{en ? 'Project' : '项目'}</a>}
+          {project.codeUrl && <a href={project.codeUrl}>{en ? 'Code' : '代码'}</a>}
+        </div>
+      </article>
+    ))}
+  </div>
+)}

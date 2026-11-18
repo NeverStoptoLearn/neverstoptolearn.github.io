@@ -1,0 +1,8 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Content from '../../components/Section.astro';
+import { sections, type Section } from '../../lib/i18n';
+export function getStaticPaths() { return sections.map(section => ({ params: { section } })); }
+const page = Astro.params.section as Section;
+---
+<Layout locale="zh" page={page}><Content locale="zh" page={page} /></Layout>

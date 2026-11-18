@@ -1,0 +1,26 @@
+---
+import { profile } from '../data/profile';
+import type { Locale } from '../data/types';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const en = locale === 'en';
+---
+<section class="home-section" id="education">
+  <h2>{en ? 'Education' : '教育背景'}</h2>
+  <ol class="education-list">
+    {profile.education.map(entry => (
+      <li class="timeline-row">
+        <div class="education-period">
+          <span>{entry.period}</span>
+          {entry.expected && <small>{en ? 'Expected completion' : '预计完成'}</small>}
+        </div>
+        <div>
+          <h3>{entry.title[locale]}</h3>
+          <p>{entry.institution[locale]}</p>
+          {entry.advisor && <p>{en ? 'Advisor: ' : '导师：'}{entry.advisor[locale]}</p>}
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
