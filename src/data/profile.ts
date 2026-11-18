@@ -19,7 +19,11 @@ export const profile = {
     zh: '我目前在中国地质大学（武汉）计算机学院攻读地学信息工程博士学位，师从颜雪松教授。本科和硕士阶段均在该校计算机学院学习计算机科学与技术。',
   },
   cvUrl: '', // Set to /files/zhouchen-cv.pdf after adding the real PDF to public/files.
-  researchAreas: [] as ResearchArea[],
+  researchAreas: [
+    { title: { en: 'Deep Learning for Source Identification', zh: '深度学习溯源' } },
+    { title: { en: 'Physics-Informed Machine Learning', zh: '物理信息机器学习' } },
+    { title: { en: 'Intelligent Optimization Algorithms', zh: '智能优化算法' } },
+  ] as ResearchArea[],
   education: [
     {
       period: '2023–2027',

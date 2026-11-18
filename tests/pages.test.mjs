@@ -29,7 +29,8 @@ for (const route of routes) {
       if (!url.startsWith('/')) continue;
       await access(url.endsWith('/') ? htmlPath(url) : path.join('dist', url));
     }
-    for (const key of pages.slice(1)) assert.ok($(`nav a[href="${route.startsWith('/zh/') ? '/zh/' : '/'}${key}"]`).length);
+    for (const key of pages.slice(1).filter(key => key !== 'research/' && key !== 'about/')) assert.ok($(`nav a[href="${route.startsWith('/zh/') ? '/zh/' : '/'}${key}"]`).length);
+    assert.equal($('nav a[href$="/research/"], nav a[href$="/about/"]').length, 0);
     assert.equal($('a[download]').length, 0, 'No fake CV download before real PDF exists');
   });
 }

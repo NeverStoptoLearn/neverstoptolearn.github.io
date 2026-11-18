@@ -35,5 +35,5 @@ export interface ResearchProject {
 }
 export interface ResearchArea {
   title: Localized;
-  description: Localized;
+  description?: Localized;
 }

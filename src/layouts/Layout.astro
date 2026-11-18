@@ -6,6 +6,7 @@ import { href, labels, descriptions, sections, type Page } from '../lib/i18n';
 interface Props { locale: Locale; page: Page; }
 const { locale, page } = Astro.props;
 const other = locale === 'en' ? 'zh' : 'en';
+const navigationSections = sections.filter(section => section !== 'research' && section !== 'about');
 const title = `${page === 'home' ? (locale === 'en' ? 'Academic Homepage' : '学术主页') : labels[locale][page]} · ${profile.name}`;
 const canonical = new URL(href(locale, page), Astro.site);
 ---
@@ -34,7 +35,7 @@ const canonical = new URL(href(locale, page), Astro.site);
       <div class="header-inner">
         <a class="brand" href={href(locale)} aria-label={`${profile.name} — ${labels[locale].home}`}>{profile.name}</a>
         <nav class="desktop-nav" aria-label={locale === 'en' ? 'Main navigation' : '主导航'}>
-          {sections.map(section => <a href={href(locale, section)} aria-current={page === section ? 'page' : undefined}>{labels[locale][section]}</a>)}
+          {navigationSections.map(section => <a href={href(locale, section)} aria-current={page === section ? 'page' : undefined}>{labels[locale][section]}</a>)}
         </nav>
         <a class="language-switch" data-language-switch href={href(other, page)} lang={other === 'zh' ? 'zh-CN' : 'en'} hreflang={other === 'zh' ? 'zh-CN' : 'en'}>{other === 'zh' ? '简体中文' : 'English'}</a>
       </div>
@@ -42,7 +43,7 @@ const canonical = new URL(href(locale, page), Astro.site);
         <summary>{locale === 'en' ? 'Menu' : '导航'}</summary>
         <nav aria-label={locale === 'en' ? 'Mobile navigation' : '移动导航'}>
           <a href={href(locale)} aria-current={page === 'home' ? 'page' : undefined}>{labels[locale].home}</a>
-          {sections.map(section => <a href={href(locale, section)} aria-current={page === section ? 'page' : undefined}>{labels[locale][section]}</a>)}
+          {navigationSections.map(section => <a href={href(locale, section)} aria-current={page === section ? 'page' : undefined}>{labels[locale][section]}</a>)}
         </nav>
       </details>
     </header>

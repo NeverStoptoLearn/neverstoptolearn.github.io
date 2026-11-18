@@ -28,11 +28,6 @@ const en = locale === 'en';
     <Records locale={locale} kind="publications" headingLevel={3} />
   </section>
   <section class="home-section">
-    <h2>{labels[locale].research}</h2>
-    {profile.researchAreas.length ? <ul>{profile.researchAreas.map(area => <li><strong>{area.title[locale]}</strong><p>{area.description[locale]}</p></li>)}</ul> : <p class="muted">{en ? 'Research interests will be added here.' : '研究方向待补充。'}</p>}
-    <a href={href(locale, 'research')}>{en ? 'More about my research' : '查看研究方向'}</a>
-  </section>
-  <section class="home-section">
     <div class="section-heading"><h2>{labels[locale].projects}</h2><a href={href(locale, 'projects')}>{en ? 'All projects' : '全部项目'}</a></div>
     <Records locale={locale} kind="projects" selected />
   </section>
