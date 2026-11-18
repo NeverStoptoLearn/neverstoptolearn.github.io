@@ -29,6 +29,7 @@ export interface ResearchProject {
   summary?: Localized;
   period?: string | Localized;
   funding?: Localized;
+  category?: 'funded-research' | 'contract-development';
   status?: 'ongoing' | 'completed';
   topics: string[];
   selected: boolean;

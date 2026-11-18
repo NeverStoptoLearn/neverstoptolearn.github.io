@@ -2,6 +2,7 @@
 import type { Locale } from '../data/types';
 import { publications } from '../data/publications';
 import { projects } from '../data/projects';
+import { profile } from '../data/profile';
 interface Props {
   locale: Locale;
   kind: 'publications' | 'projects';
@@ -17,6 +18,9 @@ const paperKinds = en
   ? { journal: 'Journal article', conference: 'Conference paper', preprint: 'Preprint' }
   : { journal: '期刊论文', conference: '会议论文', preprint: '预印本' };
 const PaperTitle = headingLevel === 3 ? 'h3' : 'h2';
+const projectCategories = en
+  ? { 'funded-research': 'Funded Research Project', 'contract-development': 'Contract Development Project' }
+  : { 'funded-research': '纵向科研项目', 'contract-development': '横向开发项目' };
 ---
 {empty ? (
   <p class="muted">
@@ -30,7 +34,7 @@ const PaperTitle = headingLevel === 3 ? 'h3' : 'h2';
       <article class="record" id={paper.id}>
         <span class="record-meta">{paper.yearLabel?.[locale] ?? paper.year} · {paperKinds[paper.kind]}</span>
         <PaperTitle class="publication-title">{paper.title[locale]}</PaperTitle>
-        <p>{paper.authors.join(en ? ', ' : '、')}</p>
+        <p class="publication-authors">{paper.authors.map((author, index) => <>{index > 0 && (en ? ', ' : '、')}{profile.publicationNames.includes(author) ? <strong>{author}</strong> : author}</>)}</p>
         <p><cite>{paper.venue}</cite>{paper.citation && `, ${paper.citation}`}</p>
         {paper.abstract && (
           <details>
@@ -55,6 +59,7 @@ const PaperTitle = headingLevel === 3 ? 'h3' : 'h2';
         {project.period && <p class="record-meta">{typeof project.period === 'string' ? project.period : project.period[locale]}</p>}
         {project.status && <span class="record-meta">{en ? project.status : project.status === 'ongoing' ? '进行中' : '已完成'}</span>}
         <h3>{project.title[locale]}</h3>
+        {project.category && <p class="record-meta project-category">{en ? 'Category: ' : '项目类别：'}{projectCategories[project.category]}</p>}
         {project.funding && <p>{project.funding[locale]}</p>}
         {project.summary && <p>{project.summary[locale]}</p>}
         {project.topics.length > 0 && <div class="tags">{project.topics.map(topic => <span>{topic}</span>)}</div>}
