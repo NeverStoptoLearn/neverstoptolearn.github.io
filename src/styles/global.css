@@ -41,7 +41,11 @@ nav a[aria-current='page'] { color: #222; text-decoration: underline; text-under
 .profile-role { margin-bottom: 4px; color: #225d9c; font-weight: 600; }
 .profile-affiliation { color: #555; }
 .profile-biography { max-width: 76ch; }
-.profile-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: .9rem; }
+.profile-contact { margin-top: 18px; }
+.profile-contact h2 { font-size: .9rem; margin-bottom: 10px; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 12px 22px; font-size: .9rem; }
+.profile-links a { display: inline-flex; align-items: center; gap: 6px; padding-block: 3px; }
+.profile-links svg { width: 18px; height: 18px; flex-shrink: 0; }
 .home-section { margin-top: 32px; }
 .section-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 24px; }
 .section-heading a { font-size: .875rem; }

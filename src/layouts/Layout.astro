@@ -6,7 +6,7 @@ import { href, labels, descriptions, sections, type Page } from '../lib/i18n';
 interface Props { locale: Locale; page: Page; }
 const { locale, page } = Astro.props;
 const other = locale === 'en' ? 'zh' : 'en';
-const navigationSections = sections.filter(section => section !== 'research' && section !== 'about');
+const navigationSections = sections.filter(section => section === 'publications' || section === 'projects');
 const title = `${page === 'home' ? (locale === 'en' ? 'Academic Homepage' : '学术主页') : labels[locale][page]} · ${profile.name}`;
 const canonical = new URL(href(locale, page), Astro.site);
 ---
