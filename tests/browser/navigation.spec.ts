@@ -26,13 +26,22 @@ for (const section of sections) {
   });
 }
 test('Navigation reaches each section', async ({ page }, info) => {
-  await page.goto('/');
-  for (const section of ['publications/', 'projects/']) {
-    if (info.project.name === 'mobile') await page.locator('.mobile-menu summary').click();
-    const nav = info.project.name === 'mobile' ? '.mobile-menu nav' : '.desktop-nav';
-    await page.locator(`${nav} a[href="/${section}"]`).click();
-    await expect(page).toHaveURL(`/${section}`);
-    await expect(page.locator(`${nav} a[aria-current="page"]`)).toHaveAttribute('href', `/${section}`);
+  for (const home of ['/', '/zh/']) {
+    await page.goto(home);
+    const portrait = page.locator('.profile-photo');
+    await expect(portrait).toBeVisible();
+    expect(await portrait.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    for (const section of ['publications', 'projects', 'reviewing', 'awards']) {
+      if (info.project.name === 'mobile') {
+        const menu = page.locator('.mobile-menu');
+        if (await menu.getAttribute('open') === null) await menu.locator('summary').click();
+      }
+      const nav = info.project.name === 'mobile' ? '.mobile-menu nav' : '.desktop-nav';
+      const link = page.locator(`${nav} a[href="#${section}"]`);
+      await link.click();
+      await expect(page).toHaveURL(`${home}#${section}`);
+      await expect(page.locator(`#${section}`)).toBeInViewport();
+    }
   }
 });
 test('Keyboard skip link reaches content', async ({ page }) => {

@@ -2,11 +2,17 @@
 import '../styles/global.css';
 import { profile } from '../data/profile';
 import type { Locale } from '../data/types';
-import { href, labels, descriptions, sections, type Page } from '../lib/i18n';
+import { href, labels, descriptions, type Page } from '../lib/i18n';
 interface Props { locale: Locale; page: Page; }
 const { locale, page } = Astro.props;
 const other = locale === 'en' ? 'zh' : 'en';
-const navigationSections = sections.filter(section => section === 'publications' || section === 'projects');
+const navigationSections = [
+  { id: 'publications', label: 'Publications' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'reviewing', label: 'Reviewing' },
+  { id: 'awards', label: 'Awards' },
+];
+const sectionHref = (id: string) => page === 'home' ? `#${id}` : `${href(locale)}#${id}`;
 const title = `${page === 'home' ? (locale === 'en' ? 'Academic Homepage' : '学术主页') : labels[locale][page]} · ${profile.name}`;
 const canonical = new URL(href(locale, page), Astro.site);
 ---
@@ -35,15 +41,14 @@ const canonical = new URL(href(locale, page), Astro.site);
       <div class="header-inner">
         <a class="brand" href={href(locale)} aria-label={`${profile.name} — ${labels[locale].home}`}>{profile.name}</a>
         <nav class="desktop-nav" aria-label={locale === 'en' ? 'Main navigation' : '主导航'}>
-          {navigationSections.map(section => <a href={href(locale, section)} aria-current={page === section ? 'page' : undefined}>{labels[locale][section]}</a>)}
+          {navigationSections.map(section => <a href={sectionHref(section.id)}>{section.label}</a>)}
         </nav>
         <a class="language-switch" data-language-switch href={href(other, page)} lang={other === 'zh' ? 'zh-CN' : 'en'} hreflang={other === 'zh' ? 'zh-CN' : 'en'}>{other === 'zh' ? '简体中文' : 'English'}</a>
       </div>
       <details class="mobile-menu">
         <summary>{locale === 'en' ? 'Menu' : '导航'}</summary>
         <nav aria-label={locale === 'en' ? 'Mobile navigation' : '移动导航'}>
-          <a href={href(locale)} aria-current={page === 'home' ? 'page' : undefined}>{labels[locale].home}</a>
-          {navigationSections.map(section => <a href={href(locale, section)} aria-current={page === section ? 'page' : undefined}>{labels[locale][section]}</a>)}
+          {navigationSections.map(section => <a href={sectionHref(section.id)}>{section.label}</a>)}
         </nav>
       </details>
     </header>

@@ -1,7 +1,7 @@
 ---
 import type { Locale } from '../data/types';
 import { profile } from '../data/profile';
-import { href, labels } from '../lib/i18n';
+import { labels } from '../lib/i18n';
 import Education from './Education.astro';
 import Records from './Records.astro';
 interface Props { locale: Locale }
@@ -10,41 +10,44 @@ const en = locale === 'en';
 ---
 <div class="page-width home">
   <header class="profile-intro">
-    <h1>{profile.name}</h1>
-    <p class="profile-role">{profile.role[locale]}</p>
-    <p class="profile-affiliation">{profile.affiliation[locale]}</p>
-    <section class="profile-contact" id="contact">
-      <h2>{en ? 'Contact' : '联系方式'}</h2>
-      <div class="profile-links">
-        <a href={`mailto:${profile.email}`}>
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <path d="m3 6 9 7 9-7" />
-          </svg>
-          <span>{profile.email}</span>
-        </a>
-        <a href={`https://orcid.org/${profile.orcid}`} rel="me noopener noreferrer" target="_blank">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="11" fill="currentColor" />
-            <circle cx="7" cy="6.6" r="1" fill="white" />
-            <path d="M7 10v7M11 8h2a4.5 4.5 0 0 1 0 9h-2Z" fill="none" stroke="white" stroke-width="1.5" />
-          </svg>
-          <span>ORCID</span>
-        </a>
-        <a href={`${profile.googleScholar}&hl=${en ? 'en' : 'zh-CN'}`} rel="noopener noreferrer" target="_blank">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m2 8 10-5 10 5-10 5Zm4 2v7c4 3 8 3 12 0v-7M22 8v8" />
-          </svg>
-          <span>Google Scholar</span>
-        </a>
-        <a href={profile.github} target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">
-            <path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.03-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15a10.8 10.8 0 0 1 5.64 0c2.15-1.45 3.09-1.15 3.09-1.15.62 1.55.23 2.7.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.32-2.63 5.28-5.14 5.56.4.35.76 1.03.76 2.08v3.1c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z" />
-          </svg>
-          <span>GitHub</span>
-        </a>
-      </div>
-    </section>
+    <img class="profile-photo" src="/zhouchen.jpg" alt={en ? 'Portrait of Zhouchen' : 'Zhouchen 的照片'} width="160" height="213" fetchpriority="high" />
+    <div class="profile-details">
+      <h1>{profile.name}</h1>
+      <p class="profile-role">{profile.role[locale]}</p>
+      <p class="profile-affiliation">{profile.affiliation[locale]}</p>
+      <section class="profile-contact" id="contact">
+        <h2>{en ? 'Contact' : '联系方式'}</h2>
+        <div class="profile-links">
+          <a href={`mailto:${profile.email}`}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 6 9 7 9-7" />
+            </svg>
+            <span>{profile.email}</span>
+          </a>
+          <a href={`https://orcid.org/${profile.orcid}`} rel="me noopener noreferrer" target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="11" fill="currentColor" />
+              <circle cx="7" cy="6.6" r="1" fill="white" />
+              <path d="M7 10v7M11 8h2a4.5 4.5 0 0 1 0 9h-2Z" fill="none" stroke="white" stroke-width="1.5" />
+            </svg>
+            <span>ORCID</span>
+          </a>
+          <a href={`${profile.googleScholar}&hl=${en ? 'en' : 'zh-CN'}`} rel="noopener noreferrer" target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m2 8 10-5 10 5-10 5Zm4 2v7c4 3 8 3 12 0v-7M22 8v8" />
+            </svg>
+            <span>Google Scholar</span>
+          </a>
+          <a href={profile.github} target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">
+              <path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.03-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15a10.8 10.8 0 0 1 5.64 0c2.15-1.45 3.09-1.15 3.09-1.15.62 1.55.23 2.7.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.32-2.63 5.28-5.14 5.56.4.35.76 1.03.76 2.08v3.1c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z" />
+            </svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </section>
+    </div>
   </header>
   <p class="profile-biography">{profile.biography[locale]}</p>
   <p class="profile-biography research-summary">{profile.researchSummary[locale]}</p>
@@ -61,8 +64,12 @@ const en = locale === 'en';
     <h2>{labels[locale].publications}</h2>
     <Records locale={locale} kind="publications" headingLevel={3} />
   </section>
-  <section class="home-section">
-    <div class="section-heading"><h2>{labels[locale].projects}</h2><a href={href(locale, 'projects')}>{en ? 'All projects' : '全部项目'}</a></div>
+  <section class="home-section" id="projects">
+    <h2>{labels[locale].projects}</h2>
     <Records locale={locale} kind="projects" selected />
+  </section>
+  <section class="home-section" id="awards">
+    <h2>{en ? 'Awards' : '获奖荣誉'}</h2>
+    <p class="muted">{en ? 'Award details forthcoming.' : '获奖信息待补充。'}</p>
   </section>
 </div>

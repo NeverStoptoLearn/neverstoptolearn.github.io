@@ -36,7 +36,8 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .85rem; }
 nav a[aria-current='page'] { color: #222; text-decoration: underline; text-underline-offset: 4px; }
 .mobile-menu { display: none; }
 .home, .subpage { padding-top: 38px; padding-bottom: 48px; min-height: calc(100vh - 170px); }
-.profile-intro { margin-bottom: 22px; padding-bottom: 20px; border-bottom: 1px solid #e5e5e5; }
+.profile-intro { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 26px; align-items: start; margin-bottom: 22px; padding-bottom: 20px; border-bottom: 1px solid #e5e5e5; }
+.profile-photo { display: block; width: 160px; height: 213px; object-fit: cover; border-radius: 4px; }
 .profile-intro h1 { margin-bottom: 6px; }
 .profile-role { margin-bottom: 4px; color: #225d9c; font-weight: 600; }
 .profile-affiliation { color: #555; }
@@ -47,6 +48,7 @@ nav a[aria-current='page'] { color: #222; text-decoration: underline; text-under
 .profile-links a { display: inline-flex; align-items: center; gap: 6px; padding-block: 3px; }
 .profile-links svg { width: 18px; height: 18px; flex-shrink: 0; }
 .home-section { margin-top: 32px; }
+.home-section[id] { scroll-margin-top: 24px; }
 .reviewing-journals { display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; padding: 0; margin: 0; }
 .reviewing-journals li { margin: 0; }
 .reviewing-journals abbr { text-decoration: none; cursor: help; }
@@ -93,6 +95,10 @@ nav a[aria-current='page'] { color: #222; text-decoration: underline; text-under
   .page-width, .header-inner, .mobile-menu, .site-footer { width: calc(100% - 36px); }
   h1 { font-size: 1.75rem; }
   .timeline-row { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (max-width: 560px) {
+  .profile-intro { grid-template-columns: 1fr; gap: 18px; }
+  .profile-photo { width: 135px; height: 180px; }
 }
 @media print {
   .site-header, .site-footer, .skip-link { display: none; }

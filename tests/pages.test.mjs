@@ -27,9 +27,19 @@ for (const route of routes) {
       assert.ok(url && url !== '#', `Empty link on ${route}`);
       if (url.startsWith('#')) { assert.equal($(`[id="${url.slice(1)}"]`).length, 1); continue; }
       if (!url.startsWith('/')) continue;
-      await access(url.endsWith('/') ? htmlPath(url) : path.join('dist', url));
+      const target = new URL(url, origin);
+      const localPath = target.pathname.endsWith('/') ? htmlPath(target.pathname) : path.join('dist', target.pathname);
+      await access(localPath);
+      if (target.hash) {
+        const targetPage = load(await readFile(localPath, 'utf8'));
+        assert.equal(targetPage(`[id="${target.hash.slice(1)}"]`).length, 1);
+      }
     }
-    for (const key of ['publications/', 'projects/']) assert.ok($(`nav a[href="${route.startsWith('/zh/') ? '/zh/' : '/'}${key}"]`).length);
+    for (const key of ['publications', 'projects', 'reviewing', 'awards']) {
+      const home = route.startsWith('/zh/') ? '/zh/' : '/';
+      const anchor = route === home ? `#${key}` : `${home}#${key}`;
+      assert.ok($(`nav a[href="${anchor}"]`).length);
+    }
     assert.equal($('nav a[href$="/research/"], nav a[href$="/about/"], nav a[href$="/cv/"], nav a[href$="/contact/"]').length, 0);
     assert.equal($('a[download]').length, 0, 'No fake CV download before real PDF exists');
   });
