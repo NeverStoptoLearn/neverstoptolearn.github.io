@@ -70,6 +70,13 @@ const en = locale === 'en';
   </section>
   <section class="home-section" id="awards">
     <h2>{en ? 'Awards' : '获奖荣誉'}</h2>
-    <p class="muted">{en ? 'Award details forthcoming.' : '获奖信息待补充。'}</p>
+    <ul class="awards-list">
+      {profile.awards.map(award => (
+        <li class="timeline-row">
+          <time datetime={award.date}>{award.date.replace('-', '.')}</time>
+          <div>{award.title[locale]}</div>
+        </li>
+      ))}
+    </ul>
   </section>
 </div>

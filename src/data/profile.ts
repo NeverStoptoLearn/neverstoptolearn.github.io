@@ -40,6 +40,29 @@ export const profile = {
     { name: 'Applied Soft Computing', abbreviation: 'Appl. Soft Comput.' },
     { name: 'Expert Systems with Applications', abbreviation: 'Expert Syst. Appl.' },
   ],
+  awards: [
+    {
+      date: '2026-05',
+      title: {
+        en: 'First Prize, Outstanding Paper Award, 9th Academic Conference on Intelligent Optimization and Scheduling',
+        zh: '第九届智能优化与调度学术会议优秀论文一等奖',
+      },
+    },
+    {
+      date: '2021-12',
+      title: {
+        en: 'National Scholarship for Master’s Students, China University of Geosciences',
+        zh: '硕士研究生国家奖学金，中国地质大学',
+      },
+    },
+    {
+      date: '2019-05',
+      title: {
+        en: 'Second Prize, 12th Hubei “Challenge Cup” Extracurricular Academic Science and Technology Competition',
+        zh: '湖北省第十二届“挑战杯”课外学术科技作品竞赛二等奖',
+      },
+    },
+  ],
   education: [
     {
       period: '2023–2027',

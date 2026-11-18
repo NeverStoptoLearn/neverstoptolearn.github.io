@@ -70,7 +70,8 @@ nav a[aria-current='page'] { color: #222; text-decoration: underline; text-under
 .empty-state { color: #666; }
 .empty-state p { margin-bottom: 0; }
 .timeline-row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; margin-bottom: 18px; }
-.timeline-row > span { color: #666; }
+.timeline-row > span, .timeline-row > time { color: #666; }
+.awards-list { list-style: none; margin: 0; padding: 0; }
 .education-list { list-style: none; margin: 0; padding: 0; }
 .education-list .timeline-row { margin-bottom: 0; padding-block: 14px; border-bottom: 1px solid #eee; }
 .education-list .timeline-row:first-child { padding-top: 0; }
