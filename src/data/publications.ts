@@ -91,7 +91,7 @@ export const publications: Publication[] = [
     venue: '华中科技大学学报（自然科学版）',
     citation: '50(10), 104–114',
     kind: 'journal',
-    referenceUrl: 'https://zzs.ujs.edu.cn/xbzkb/EN/10.3969/j.issn.1671-7775.2025.03.010',
+    doi: '10.13245/j.hust.221014',
   },
   {
     id: 'real-time-drinking-water-source-location',

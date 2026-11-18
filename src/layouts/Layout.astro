@@ -7,10 +7,10 @@ interface Props { locale: Locale; page: Page; }
 const { locale, page } = Astro.props;
 const other = locale === 'en' ? 'zh' : 'en';
 const navigationSections = [
-  { id: 'publications', label: 'Publications' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'reviewing', label: 'Reviewing' },
-  { id: 'awards', label: 'Awards' },
+  { id: 'publications', label: labels[locale].publications },
+  { id: 'projects', label: labels[locale].projects },
+  { id: 'reviewing', label: locale === 'zh' ? '期刊审稿' : 'Reviewing' },
+  { id: 'awards', label: locale === 'zh' ? '获奖荣誉' : 'Awards' },
 ];
 const sectionHref = (id: string) => page === 'home' ? `#${id}` : `${href(locale)}#${id}`;
 const title = `${page === 'home' ? (locale === 'en' ? 'Academic Homepage' : '学术主页') : labels[locale][page]} · ${profile.name}`;
