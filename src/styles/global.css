@@ -47,6 +47,9 @@ nav a[aria-current='page'] { color: #222; text-decoration: underline; text-under
 .profile-links a { display: inline-flex; align-items: center; gap: 6px; padding-block: 3px; }
 .profile-links svg { width: 18px; height: 18px; flex-shrink: 0; }
 .home-section { margin-top: 32px; }
+.reviewing-journals { display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; padding: 0; margin: 0; }
+.reviewing-journals li { margin: 0; }
+.reviewing-journals abbr { text-decoration: none; cursor: help; }
 .section-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 24px; }
 .section-heading a { font-size: .875rem; }
 .page-title { margin-bottom: 26px; }

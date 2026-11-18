@@ -54,6 +54,14 @@ const en = locale === 'en';
     <Records locale={locale} kind="publications" headingLevel={3} />
   </section>
   <section class="home-section">
+    <h2>{en ? 'Journal Reviewing' : '期刊审稿'}</h2>
+    <ul class="reviewing-journals" id="reviewing">
+      {profile.reviewingJournals.map(journal => (
+        <li><abbr title={journal.name}>{journal.abbreviation}</abbr></li>
+      ))}
+    </ul>
+  </section>
+  <section class="home-section">
     <div class="section-heading"><h2>{labels[locale].projects}</h2><a href={href(locale, 'projects')}>{en ? 'All projects' : '全部项目'}</a></div>
     <Records locale={locale} kind="projects" selected />
   </section>

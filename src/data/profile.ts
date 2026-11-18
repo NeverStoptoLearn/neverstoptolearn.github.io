@@ -28,6 +28,18 @@ export const profile = {
     { title: { en: 'Physics-Informed Machine Learning', zh: '物理信息机器学习' } },
     { title: { en: 'Intelligent Optimization Algorithms', zh: '智能优化算法' } },
   ] as ResearchArea[],
+  reviewingJournals: [
+    { name: 'Neural Computing and Applications', abbreviation: 'Neural Comput. Appl.' },
+    { name: 'Water', abbreviation: 'Water' },
+    { name: 'IEEE Access', abbreviation: 'IEEE Access' },
+    { name: 'Information Sciences', abbreviation: 'Inf. Sci.' },
+    { name: 'Journal of Cleaner Production', abbreviation: 'J. Clean. Prod.' },
+    { name: 'Journal of Hazardous Materials', abbreviation: 'J. Hazard. Mater.' },
+    { name: 'Applied Water Science', abbreviation: 'Appl. Water Sci.' },
+    { name: 'Journal of Hydrology', abbreviation: 'J. Hydrol.' },
+    { name: 'Applied Soft Computing', abbreviation: 'Appl. Soft Comput.' },
+    { name: 'Expert Systems with Applications', abbreviation: 'Expert Syst. Appl.' },
+  ],
   education: [
     {
       period: '2023–2027',
